@@ -1,0 +1,49 @@
+server {
+    listen   <%= listen %> ;
+
+    server_name  <% real_server_name.each do |s_n| -%><%= s_n %> <% end -%>;
+
+    access_log  <%= real_access_log %>;
+
+    root <%= root %>;
+
+<% if listen == '443' %>
+    ssl  on;
+    ssl_certificate  <%= real_ssl_certificate %>;
+    ssl_certificate_key  <%= real_ssl_certificate_key %>;
+    ssl_session_timeout  <%= ssl_session_timeout %>;
+
+    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+    ssl_prefer_server_ciphers   on;
+<% end -%>
+    location / {
+        try_files $uri $uri/ @rewrite;
+    }
+
+    location @rewrite {
+        rewrite ^(.+)$ /<%= index %>$1 last;
+    }
+
+    location ~ ^(.+\.php)(/.*)?$ {
+        fastcgi_split_path_info ^(.+?\.php)(/.*)?$;
+        if (!-e $document_root$fastcgi_script_name) {
+            return 404;
+        }
+        fastcgi_index index.php;
+        include /etc/nginx/includes/fastcgi_params.inc;
+        fastcgi_param PHALCON_MODE development;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_pass <%= fastcgi_pass %>;
+    }
+
+    location ~ /\.ht {
+        deny  all;
+    }
+
+<% if include  != '' %> <%include.each do |inc| %>include <%= inc %>;
+    <% end -%><% end -%>
+}
+

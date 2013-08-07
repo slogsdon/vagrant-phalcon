@@ -1,0 +1,6 @@
+.project
+.vagrant
+metadata.json
+pkg/*
+~*
+

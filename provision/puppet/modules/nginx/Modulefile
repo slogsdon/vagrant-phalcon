@@ -1,0 +1,8 @@
+name    'BenoitCattie-nginx'
+version '0.0.2'
+source 'https://github.com/BenoitCattie/puppet-nginx.git'
+author 'BenoitCattie'
+license 'APACHE2'
+summary 'Basic module for configuring nginx via puppet'
+description 'Basic module for configuring nginx via puppet. You can easily create fcgi vhost with this module.'
+project_page 'http://github.com/BenoitCattie/puppet-nginx'

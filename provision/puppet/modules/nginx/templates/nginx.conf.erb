@@ -1,0 +1,35 @@
+user <%= real_nginx_user %>;
+worker_processes  <%= real_nginx_worker_processes  %>;
+
+error_log  /var/log/nginx/error.log;
+pid        /var/run/nginx.pid;
+
+events {
+    worker_connections  <%= real_nginx_worker_connections  %>;
+    # multi_accept on;
+}
+
+http {
+    <% if nginxversion =~ /^1\.\d{1,}\.\d{1,}$/ -%>
+    types_hash_max_size 2048;
+
+    <% end -%>
+    include       /etc/nginx/mime.types;
+
+    access_log	/var/log/nginx/access.log;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+    tcp_nodelay        on;
+
+    gzip  on;
+    gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+
+    server_tokens off;
+}
