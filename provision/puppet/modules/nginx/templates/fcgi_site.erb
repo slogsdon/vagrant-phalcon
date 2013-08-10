@@ -18,7 +18,7 @@ server {
     ssl_prefer_server_ciphers   on;
 <% end -%>
     location / {
-        try_files $uri $uri/ @rewrite;
+        try_files $uri @rewrite;
     }
 
     location @rewrite {
