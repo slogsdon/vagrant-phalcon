@@ -16,8 +16,12 @@ config.vm.network :forwarded_port, guest: 80, host: 8081
   end
 
   # installer/updater for cphalcon
-  # installer for phalcon-devtools
   config.vm.provision :shell do |sh|
     sh.path = "provision/shell/install_phalcon.sh"
+  end
+
+  # installer/updater for phalcon-devtools
+  config.vm.provision :shell do |sh|
+    sh.path = "provision/shell/install_phalcon-devtools.sh"
   end
 end
