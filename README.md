@@ -13,7 +13,7 @@ a template for using Vagrant for developing PHP applications with Phalcon
 ### Note
 
 Nginx is configured by default to use `./src/Public/` as the root directory. 
-If your public directory differs, be sure to update the `Vagrantfile` to 
+If your public directory differs, be sure to update the [`base.pp`](provision/puppet/manifests/base.pp) file to 
 reflect your needs.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/ee449352f9866118390e46bde6e6750a "githalytics.com")](http://githalytics.com/slogsdon/vagrant-phalcon)
