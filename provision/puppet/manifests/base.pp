@@ -47,11 +47,11 @@ nginx::fcgi::site {"default":
   server_name     => ["localhost", "$hostname", "$fqdn"],
 }
 
-class { 'mysql::server':
+class { 'mariadb::server':
   config_hash => { 'root_password' => 'secure_root_password' }
 }
 
-mysql::db { 'dbname':
+mariadb::db { 'dbname':
   user     => 'dbuser',
   password => 'dbpass',
   host     => 'localhost',

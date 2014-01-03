@@ -1,0 +1,15 @@
+###############################################
+# This file is managed by Puppet. DO NOT EDIT #
+###############################################
+
+[client]
+host     = localhost
+user     = debian-sys-maint
+password = <%= debiansysmaint_password %>
+socket   = /var/run/mysqld/mysqld.sock
+[mysql_upgrade]
+host     = localhost
+user     = debian-sys-maint
+password = <%= debiansysmaint_password %>
+socket   = /var/run/mysqld/mysqld.sock
+basedir  = /usr

@@ -1,0 +1,14 @@
+# This file is managed by Puppet. DO NOT EDIT 
+
+[mysqld]
+wsrep_provider = /usr/lib/galera/libgalera_smm.so
+wsrep_cluster_address = 'gcomm://<%= @cluster_peer %>'
+wsrep_cluster_name = <%= @wsrep_cluster_name %>
+wsrep_sst_auth = '<%= @wsrep_sst_auth %>'
+wsrep_sst_method = <%= @wsrep_sst_method %>
+wsrep_slave_threads = <%= @wsrep_slave_threads %>
+
+binlog_format = ROW
+default_storage_engine = InnoDB
+innodb_autoinc_lock_mode = 2
+innodb_locks_unsafe_for_binlog = 1

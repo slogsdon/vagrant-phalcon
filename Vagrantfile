@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 config.vm.network :forwarded_port, guest: 80, host: 8081
 
-  # TODO: fix this hack that ensures 'apt-get update' runs before mysql
+  # TODO: fix this hack that ensures 'apt-get update' runs before mariadb
   # is provisioned with puppet
   config.vm.provision :shell, :inline => "apt-get update --fix-missing"
 
