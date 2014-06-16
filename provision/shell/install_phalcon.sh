@@ -39,7 +39,7 @@ else
         elif [ -d "/etc/php5/mods-available" ]; then #debian-like
             echo 'extension=phalcon.so' > /etc/php5/mods-available/phalcon.ini
             [ -d '/etc/php5/cli' ] && ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/cli/conf.d/phalcon.ini
-            [ -d '/etc/php5/apache' ] && ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/apache/conf.d/phalcon.ini
+            [ -d '/etc/php5/apache' ] && ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/apache2/conf.d/phalcon.ini
             [ -d '/etc/php5/fpm' ] && ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/fpm/conf.d/phalcon.ini
         elif [ -d "/etc/php5/conf.d" ]; then #debian-like old way
             echo 'extension=phalcon.so' > /etc/php5/conf.d/phalcon.ini
