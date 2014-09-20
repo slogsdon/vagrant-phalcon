@@ -29,6 +29,7 @@ else
 
     # Run build script
     cd build
+    curl -L 'https://gist.githubusercontent.com/denji/7f517e8cb8fd1ff0ad8c/raw/13db67d010e4cb5b05c8a1f9f551fad8884e8466/cphalcon-gccfix.diff' | patch -p2 --quiet
     ./install
     wait
 
